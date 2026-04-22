@@ -59,6 +59,7 @@
 //}
 package z_project3.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -87,18 +88,18 @@ public class PostController {
     @Autowired
     CommentRepository commentRepository;
 
-
+    @Operation(summary = "Create a new post")
     @PostMapping("/post")
     public ResponseEntity<?> createPost(@RequestBody Post post) {
         postService.create(post);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @Operation(summary = "Get all Posts")
     @GetMapping("/posts")
     public ResponseEntity<?> getAllPosts() {
         return new ResponseEntity<>(postService.getposts(), HttpStatus.OK);
     }
-
+    @Operation(summary = "Comment by id")
     @PostMapping("/comment/{id}")
     public ResponseEntity<?> addComment(@RequestBody Comment comment, @PathVariable Long id) {
         Post post = postService.findById(id).orElse(null);
@@ -131,7 +132,7 @@ public class PostController {
         commentRepository.save(comment);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @Operation(summary = "Like by id")
     @PostMapping("/like/{id}")
     public ResponseEntity<?> likePost(@PathVariable Long id) {
         Post post = postService.findById(id).orElse(null);
@@ -149,11 +150,13 @@ public class PostController {
         String score = redisService.getViralityScore(id);
         return new ResponseEntity<>("Virality Score: " + score, HttpStatus.OK);
     }
+    @Operation(summary = "Delete post by id")
     @DeleteMapping("/comments/delete/{postId}")
     public ResponseEntity<?> deleteComments(@PathVariable Long postId) {
         commentRepository.deleteByPostId(postId);
         return new ResponseEntity<>("Deleted!", HttpStatus.OK);
     }
+    @Operation(summary = "Counts comments by postid")
     @GetMapping("/comments/count/{postId}")
     public ResponseEntity<?> getCommentCount(@PathVariable Long postId) {
         long count = commentRepository.countByPostId(postId);
