@@ -17,12 +17,14 @@ public class BotController {
 
     @Autowired
     private BotService botService;
+
     @Operation(summary = "Create a new Bot")
     @PostMapping("/bots")
     public ResponseEntity<?> createBot(@RequestBody Bot bot) {
         Bot saved = botService.create(bot);
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
+
     @Operation(summary = "Get All Bots")
     @GetMapping("/bots")
     public ResponseEntity<?> getAllBots() {

@@ -15,11 +15,13 @@ import z_project3.service.CommentService;
 public class CommentController {
     @Autowired
     public CommentService commentService;
+
     @Operation(summary = "Create a new Comment")
     @GetMapping("/get/{postid}")
     public ResponseEntity<?> getcomments(@PathVariable Long postid) {
         return new ResponseEntity<>(commentService.getcommentsbypostid(postid), HttpStatus.OK);
     }
+
     @Operation(summary = "Get all Comments")
     @GetMapping("/comments")
     public ResponseEntity<?> getAllComments() {

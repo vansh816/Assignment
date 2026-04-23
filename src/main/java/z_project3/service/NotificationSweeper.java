@@ -17,7 +17,7 @@ public class NotificationSweeper {
     @Scheduled(fixedRate =  5 * 60 * 1000)
     public void sweep() {
         System.out.println("CRON chala — pending notifications check ho rahi hain...");
-        // Dhundo — kaunse users ki notifications pending hain
+        // Dhundo kaunse users ki notifications pending hain
         Set<String> keys = redis.keys("user:*:pending_notifs");
         if (keys == null || keys.isEmpty()) {
             System.out.println("Koi pending notification nahi mili.");
@@ -39,7 +39,7 @@ public class NotificationSweeper {
             }
 
             System.out.println("Summarized Push Notification → User " + userId + ": " + summary);
-            // List saaf karo — warna kal phir same notifications aayengi
+            // List clean kri — warna kal phir same notifications aayengi
             redis.delete(key);
         }
     }}

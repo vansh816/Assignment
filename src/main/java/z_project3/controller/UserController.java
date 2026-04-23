@@ -15,12 +15,14 @@ public class UserController {
 
  @Autowired
     private UserService userService;
+
     @Operation(summary = "Create a new User")
     @PostMapping("/users")
     public ResponseEntity<?> createUser(@RequestBody User user) {
         User saved = userService.create(user);
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
+
     @Operation(summary = "Get All users")
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers() {

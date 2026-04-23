@@ -20,10 +20,6 @@ public class PostService {
     public Optional<Post> findById(Long id){
         return postRepository.findById(id);
     }
-//    public  addcomment(Comment comment,Long id){
-//
-//
-//    }
     public List<Post> getposts(){
         return  postRepository.findAll();
     }
