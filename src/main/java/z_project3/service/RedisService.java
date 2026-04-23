@@ -28,6 +28,7 @@ public class RedisService {
             return true;
         }
         return false;
+
     }
 
     // Vertical Cap - depth > 20 reject

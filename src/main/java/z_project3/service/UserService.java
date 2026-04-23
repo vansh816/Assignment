@@ -1,12 +1,8 @@
 package z_project3.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import z_project3.model.Bot;
 import z_project3.model.User;
-import z_project3.repository.BotRepository;
 import z_project3.repository.UserRepository;
-
 import java.util.List;
 
 @Service

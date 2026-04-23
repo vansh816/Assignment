@@ -14,7 +14,7 @@ public class NotificationSweeper {
         this.redis = redis;
     }
     // Ye method har 5 minute mein automatically chalega
-    @Scheduled(fixedRate =  5 * 60 * 1000)
+    @Scheduled(fixedRate =  1 * 60 * 1000)
     public void sweep() {
         System.out.println("CRON chala — pending notifications check ho rahi hain...");
         // Dhundo kaunse users ki notifications pending hain

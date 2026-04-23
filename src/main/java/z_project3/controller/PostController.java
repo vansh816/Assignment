@@ -152,7 +152,7 @@ public class PostController {
         return new ResponseEntity<>("Virality Score: " + score, HttpStatus.OK);
     }
 
-    @Operation(summary = "Delete post by id")
+    @Operation(summary = "Delete comments by id")
     @DeleteMapping("/comments/delete/{postId}")
     public ResponseEntity<?> deleteComments(@PathVariable Long postId) {
         commentRepository.deleteByPostId(postId);
@@ -166,4 +166,8 @@ public class PostController {
         return new ResponseEntity<>("Total comments: " + count, HttpStatus.OK);
     }
 
+//    @DeleteMapping("/posts/{id}")
+//    public ResponseEntity<?> delete(@PathVariable Long id){
+//        ret
+//    }
 }
